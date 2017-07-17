@@ -1,0 +1,82 @@
+<html>
+<head>
+	<title>game</title>
+
+	<script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+	<script src="https://code.createjs.com/tweenjs-0.6.2.min.js"></script>
+
+	<script src="https://code.createjs.com/soundjs-0.6.2.min.js"></script></head>
+	<script src="http://code.createjs.com/preloadjs-0.1.0.min.js"></script>
+
+
+		<script>
+
+		var KEYCODE_LEFT = 37, 
+		KEYCODE_RIGHT = 39,
+		KEYCODE_UP = 38, 
+		KEYCODE_DOWN = 40;
+		var stage;
+		var asteroid;
+		
+		function keyPressed(event) {
+			switch(event.keyCode) {
+				case KEYCODE_LEFT:	
+					asteroid.x -= 5;
+					break;
+				case KEYCODE_RIGHT: 
+					asteroid.x += 5; 
+					break;
+				case KEYCODE_UP: 
+					asteroid.y -= 5;
+					break;
+				case KEYCODE_DOWN: 
+					asteroid.y += 5;
+					break;
+			}
+			stage.update();
+		}
+		
+		function start() {
+			asteroid = new createjs.Bitmap("./sonic.png");
+			asteroid.y = 0;
+			asteroid.x = 50;
+			
+			stage = new createjs.Stage(document.getElementById("testCanvas"));
+			stage.addChild(asteroid);
+			stage.update();
+			
+			this.document.onkeydown = keyPressed;		
+		}
+
+
+
+
+		
+
+	</script>
+
+
+</head>
+<body onload="start();">
+	<header id="header" class="EaselJS">
+	    <h1><span class="text-product">Easel<strong>JS. </strong></span>Keyboard Demo.</h1>
+	</header>
+	<div class="canvasHolder">
+		<canvas id="testCanvas" width="800" height="400"></canvas>
+	</div>
+	<br/> 
+	<br/>
+	<header id="header" class="EaselJS">
+	    <p>  <a href="http://www.iwt2.org/">IWT2 Group</a></p>
+	</header>
+	
+
+
+	<style type="text/css">
+	#testCanvas {
+		border: 1px solid #c2c2c2;
+		border-radius: 10px;
+	}
+	</style>
+</body>
+</html>
